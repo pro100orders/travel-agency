@@ -25,7 +25,7 @@ const FeaturedProperties = () => {
             ) : (
                 <div style={{display: "flex", flexWrap: "wrap"}}>
                     {data.slice(0, number).map((item) => (
-                        <div className="fpItem" key={item.id}>
+                        <div className="fpItem" key={item.id} style={{minWidth: 200}}>
                             {
                                 item.images &&
                                 <Link to={`/hotels/${item.id}`} style={{textDecoration: "none"}}>
