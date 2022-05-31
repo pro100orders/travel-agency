@@ -57,7 +57,7 @@ public class CityServiceImpl implements CityService {
     @Override
     @Transactional(readOnly = true)
     public List<CityDTO> getAll() {
-        return cityMapper.toListCityDTO(
+        return cityMapper.toCityDTO(
                 cityRepository.findAll()
         );
     }

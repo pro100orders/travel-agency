@@ -1,7 +1,5 @@
 package com.pro100user.travelagencybackend.dto;
 
-import com.pro100user.autoservicebackend.entity.enums.Sex;
-import com.pro100user.travelagencybackend.entity.enums.Sex;
 import lombok.*;
 
 @Getter
@@ -20,6 +18,4 @@ public class UserDTO {
     private String email;
 
     private String phone;
-
-    private Sex sex;
 }

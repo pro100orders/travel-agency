@@ -1,10 +1,8 @@
 package com.pro100user.travelagencybackend.mapper;
 
-import com.pro100user.travelagencybackend.dto.RoomDTO;
 import com.pro100user.travelagencybackend.dto.UserCreateDTO;
 import com.pro100user.travelagencybackend.dto.UserDTO;
 import com.pro100user.travelagencybackend.dto.UserUpdateDTO;
-import com.pro100user.travelagencybackend.entity.Room;
 import com.pro100user.travelagencybackend.entity.User;
 import org.mapstruct.Mapper;
 
@@ -17,5 +15,5 @@ public interface UserMapper {
     User toEntity(UserUpdateDTO dto);
 
     UserDTO toUserDTO(User user);
-    List<UserDTO> toListUserDTO(List<User> users);
+    List<UserDTO> toUserDTO(List<User> users);
 }

@@ -4,7 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -26,5 +28,5 @@ public class Country implements Serializable {
 
 
     @OneToMany(mappedBy = "country", fetch = FetchType.LAZY, targetEntity = City.class)
-    private Set<City> cities = new HashSet<>();
+    private List<City> cities = new ArrayList<>();
 }

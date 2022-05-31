@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
             throw new BadCredentialsException("phone");
         }
         User entity = userMapper.toEntity(dto);
-        entity.setRoles(Set.of(Role.ROLE_USER));
+        entity.setRoles(List.of(Role.ROLE_USER));
         entity.setPassword(passwordEncoder.encode(entity.getPassword()));
         entity.setEnabled(true);
         userRepository.save(entity);
@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDTO> getAll() {
-        return userMapper.toListUserDTO(
+        return userMapper.toUserDTO(
                 userRepository.findAll()
         );
     }

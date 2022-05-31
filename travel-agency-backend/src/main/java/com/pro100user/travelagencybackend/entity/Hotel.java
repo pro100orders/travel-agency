@@ -4,8 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,10 +24,14 @@ public class Hotel implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "hotel_images", joinColumns = @JoinColumn(name = "hotel_id", referencedColumnName = "id"))
+    @Builder.Default
+    @ElementCollection(fetch = FetchType.LAZY)
+    @CollectionTable(
+            name = "hotel_images",
+            joinColumns = @JoinColumn(name = "hotel_id", referencedColumnName = "id")
+    )
     @Column(name = "image", nullable = false)
-    private Set<String> images = new HashSet<>();
+    private List<String> images = new ArrayList<>();
 
     @Column(name = "address", nullable = false)
     private String address;
@@ -42,7 +46,7 @@ public class Hotel implements Serializable {
     @Column(name = "description", nullable = false)
     private String description;
 
-
+    @Builder.Default
     @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, targetEntity = Room.class)
-    private Set<Room> rooms = new HashSet<>();
+    private List<Room> rooms = new ArrayList<>();
 }

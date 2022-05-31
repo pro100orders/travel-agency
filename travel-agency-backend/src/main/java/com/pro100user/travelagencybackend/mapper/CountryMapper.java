@@ -13,5 +13,5 @@ public interface CountryMapper {
     Country toEntity(CountryUpdateDTO dto);
 
     CountryDTO toCountryDTO(Country country);
-    List<CountryDTO> toListCountryDTO(List<Country> countries);
+    List<CountryDTO> toCountryDTO(List<Country> countries);
 }

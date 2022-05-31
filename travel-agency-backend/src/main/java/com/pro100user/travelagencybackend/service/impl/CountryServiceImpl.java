@@ -1,7 +1,6 @@
 package com.pro100user.travelagencybackend.service.impl;
 
 import com.pro100user.travelagencybackend.dto.*;
-import com.pro100user.travelagencybackend.entity.City;
 import com.pro100user.travelagencybackend.entity.Country;
 import com.pro100user.travelagencybackend.mapper.CountryMapper;
 import com.pro100user.travelagencybackend.repository.CountryRepository;
@@ -56,7 +55,7 @@ public class CountryServiceImpl implements CountryService {
     @Override
     @Transactional(readOnly = true)
     public List<CountryDTO> getAll() {
-        return countryMapper.toListCountryDTO(
+        return countryMapper.toCountryDTO(
                 countryRepository.findAll()
         );
     }

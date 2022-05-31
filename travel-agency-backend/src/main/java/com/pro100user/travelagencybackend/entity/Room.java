@@ -1,13 +1,12 @@
 package com.pro100user.travelagencybackend.entity;
 
 import com.pro100user.travelagencybackend.entity.enums.Rating;
-import com.pro100user.travelagencybackend.entity.enums.Sex;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -30,9 +29,8 @@ public class Room implements Serializable {
     @Column(name = "price", nullable = false)
     private double price;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "rating", nullable = false)
-    private Rating rating;
+    private int rating;
 
     @Column(name = "count_people", nullable = false)
     private int countPeople;
@@ -40,7 +38,10 @@ public class Room implements Serializable {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @Column(name = "count", nullable = false)
+    private String count;
+
 
     @OneToMany(mappedBy = "room", fetch = FetchType.LAZY, targetEntity = Order.class)
-    private Set<Order> orders = new HashSet<>();
+    private List<Order> orders = new ArrayList<>();
 }

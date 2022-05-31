@@ -2,7 +2,9 @@ package com.pro100user.travelagencybackend.entity;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.pro100user.travelagencybackend.entity.enums.Status;
 import lombok.*;
@@ -10,6 +12,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -41,15 +44,15 @@ public class Order implements Serializable {
     @Column(name = "price", nullable = false)
     private double price;
 
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     @Column(name = "start_at", nullable = false)
-    private LocalDateTime startAt;
+    private LocalDate startAt;
 
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
     @Column(name = "end_at", nullable = false)
-    private LocalDateTime endAt;
+    private LocalDate endAt;
 
     @CreationTimestamp
     @JsonSerialize(using = LocalDateTimeSerializer.class)

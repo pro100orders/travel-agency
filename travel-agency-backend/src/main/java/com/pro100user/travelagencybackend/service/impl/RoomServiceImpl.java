@@ -57,7 +57,7 @@ public class RoomServiceImpl implements RoomService {
     @Override
     @Transactional(readOnly = true)
     public List<RoomDTO> getAll() {
-        return roomMapper.toListRoomDTO(
+        return roomMapper.toRoomDTO(
                 roomRepository.findAll()
         );
     }
