@@ -11,7 +11,7 @@ public interface HotelService {
     HotelDTO getById(Long hotelId);
     HotelDTO update(HotelUpdateDTO dto);
     boolean delete(Long hotelId);
-    List<HotelDTO> getAll();
+    List<HotelDTO> getAll(String city);
 
     HotelDTO setImage(MultipartFile file, Long hotelId);
     List<RoomDTO> rooms(Long hotelId);

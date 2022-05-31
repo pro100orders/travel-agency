@@ -33,7 +33,7 @@ public class AdminController {
 
     @GetMapping("hotels")
     public List<HotelDTO> hotels() {
-        return hotelService.getAll();
+        return hotelService.getAll("");
     }
 
     @GetMapping("rooms")

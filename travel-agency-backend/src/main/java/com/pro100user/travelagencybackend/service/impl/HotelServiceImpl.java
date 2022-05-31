@@ -18,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Locale;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -64,10 +66,20 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<HotelDTO> getAll() {
-        return hotelMapper.toHotelDTO(
-                hotelRepository.findAll()
-        );
+    public List<HotelDTO> getAll(String city) {
+        if (city.equals("")) {
+            return hotelMapper.toHotelDTO(
+                    hotelRepository.findAll()
+            );
+        }
+        else {
+            return hotelMapper.toHotelDTO(
+                    hotelRepository.findAll().stream()
+                            .filter(hotel ->
+                                    hotel.getCity().getName().toLowerCase(Locale.ROOT).contains(city.toLowerCase()))
+                            .collect(Collectors.toList())
+            );
+        }
     }
 
     @Override

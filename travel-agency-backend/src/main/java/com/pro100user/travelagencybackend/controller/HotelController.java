@@ -21,9 +21,11 @@ public class HotelController {
 
     private final HotelService hotelService;
 
-    @GetMapping
-    public List<HotelDTO> hotels() {
-        return hotelService.getAll();
+    @GetMapping()
+    public List<HotelDTO> hotels(
+            @RequestParam(defaultValue = "", name = "city") String city
+    ) {
+        return hotelService.getAll(city);
     }
 
     @GetMapping("/rooms/{id}")
